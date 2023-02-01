@@ -1,0 +1,15 @@
+# ---- IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+.idea/
+
+# ---- SonarQube
+.sonar
+.scannerwork
+sonar-project*.properties
+
+# ---- Yosys
+yosys_workdir/
+build_dir/
+bugfinder_workdir/

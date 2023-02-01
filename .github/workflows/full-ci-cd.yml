@@ -1,0 +1,73 @@
+name: Full CI/CD
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: SonarQube Analysis
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    env:
+      LINTY_YOSYS_PLUGIN_VERSION: 0.7.0
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set Up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: temurin
+
+      - name: Install Tabby CAD Suite
+        run: |
+          cd /opt
+          pip install gdown
+          gdown https://drive.google.com/file/d/19HyQxyqcUfOAZZTkjliec0AHRSeM-Zwm/view?usp=sharing --fuzzy
+          tar xfz tabby-linux-x64-20230111.tgz
+          cd tabby
+          mkdir ./share/yosys/plugins
+          echo "$TABBY_CAD_LICENSE" >> license.txt
+        env:
+          TABBY_CAD_LICENSE: ${{secrets.TABBY_CAD_LICENSE}}
+
+      - name: Download Yosys Plugin
+        uses: dsaltares/fetch-gh-release-asset@1.1.0
+        with:
+          repo: "Linty-Services/linty-yosys-plugin"
+          version: "tags/${{env.LINTY_YOSYS_PLUGIN_VERSION}}"
+          file: "linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz"
+          target: "linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz"
+          token: ${{ secrets.PUBLIC_SHARE_GITHUB_TOKEN }}
+
+      - name: Install Linty Yosys Plugin
+        run: tar -xvzf linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz -C /opt/tabby/share/yosys/plugins
+
+      - name: Run SonarQube Analysis
+        run: |
+          export TABBY_CAD_HOME=/opt/tabby
+          export PATH="$TABBY_CAD_HOME/bin:$PATH"
+          export YOSYSHQ_LICENSE=/opt/tabby/license.txt
+          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+          unzip -q sonar-scanner-cli-4.7.0.2747-linux.zip
+          ./sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
+            -Dsonar.host.url=https://sonar.linty-services.com \
+            -Dsonar.login=${{ secrets.SONARQUBE_SCANNER_FOR_PRIVATE_REPOSITORIES_TOKEN }} \
+            -Dsonar.projectKey=TEST_NEORV32 \
+            -Dsonar.projectName="Test NEORV32" \
+            -Dsonar.sources=. \
+            -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Debug
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: debug
+          path: |
+            bugfinder_workdir/
