@@ -13,3 +13,5 @@ sonar-project*.properties
 yosys_workdir/
 build_dir/
 bugfinder_workdir/
+
+
