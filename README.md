@@ -4,3 +4,4 @@
     * `assert not (PMP_NUM_REGIONS > 0) report "NEORV32 CPU CONFIG NOTE: Implementing ...`
     * `assert not ((CPU_EXTENSION_RISCV_Zihpm = true) and (HPM_NUM_CNTS > 0)) report "NEORV32 CPU ...`
 * build.ys file added
+* linty/bugfinder aanalysis available on : https://sonar.linty-services.com/dashboard?id=TEST_NEORV32
