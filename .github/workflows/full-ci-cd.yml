@@ -52,9 +52,9 @@ jobs:
           export TABBY_CAD_HOME=/opt/tabby
           export PATH="$TABBY_CAD_HOME/bin:$PATH"
           export YOSYSHQ_LICENSE=/opt/tabby/license.txt
-          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-          unzip -q sonar-scanner-cli-4.7.0.2747-linux.zip
-          ./sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
+          wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856.zip
+          unzip -q sonar-scanner-cli-4.8.0.2856.zip
+          ./sonar-scanner-4.8.0.2856/bin/sonar-scanner \
             -Dsonar.host.url=https://sonar.linty-services.com \
             -Dsonar.login=${{ secrets.SONARQUBE_SCANNER_FOR_PRIVATE_REPOSITORIES_TOKEN }} \
             -Dsonar.projectKey=TEST_NEORV32 \
