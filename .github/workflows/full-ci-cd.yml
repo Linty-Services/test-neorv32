@@ -10,17 +10,17 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     env:
-      LINTY_YOSYS_PLUGIN_VERSION: 0.7.0
+      LINTY_YOSYS_PLUGIN_VERSION: 0.8.0
     steps:
       - name: Git Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Set Up JDK 11
+      - name: Set Up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: 17
           distribution: temurin
 
       - name: Install Tabby CAD Suite
