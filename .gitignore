@@ -17,3 +17,9 @@ bugfinder_workdir/
 
 #NanoXplore Poject
 buildNX/
+
+#vunit simulation
+neorv32*/sim/vunit_out/
+
+#python temp file
+**/*.pyc
