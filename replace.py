@@ -9,7 +9,7 @@ from pathlib import Path
 
 def replace_sonarqube_coverage():
     #neorv32 source folder
-    Neorv32Folder='neorv32-1.7.8'
+    Neorv32Folder='neorv32'
     #Vunit sonarqube coverage report file location
     Neorv32CovFile='./coverage.xml'
     #sonarqube target location
