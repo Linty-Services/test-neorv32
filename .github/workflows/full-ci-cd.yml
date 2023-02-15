@@ -59,7 +59,7 @@ jobs:
             -Dsonar.login=${{ secrets.SONARQUBE_SCANNER_FOR_PRIVATE_REPOSITORIES_TOKEN }} \
             -Dsonar.projectKey=TEST_NEORV32 \
             -Dsonar.projectName="Test NEORV32" \
-            -Dsonar.sources=. \
+            -Dsonar.sources=./neorv32/rtl \
             -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo \
             -Dsonar.coverageReportPaths=./coverage.xml
         env:
