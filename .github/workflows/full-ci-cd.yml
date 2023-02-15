@@ -60,7 +60,8 @@ jobs:
             -Dsonar.projectKey=TEST_NEORV32 \
             -Dsonar.projectName="Test NEORV32" \
             -Dsonar.sources=. \
-            -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo
+            -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo \
+            -Dsonar.coverageReportPaths=./coverage.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
