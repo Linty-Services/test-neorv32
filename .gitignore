@@ -20,6 +20,8 @@ buildNX/
 
 #vunit simulation
 neorv32*/sim/vunit_out/
+neorv32*/sim/coverage_data/
+neorv32*/sim/coverage.xml
 
 #python temp file
 **/*.pyc

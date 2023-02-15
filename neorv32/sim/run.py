@@ -11,6 +11,7 @@ from replace import replace_sonarqube_coverage
 
 
 def post_run(results):
+    results.merge_coverage(file_name="coverage_data")
     call(["gcovr", "-v","-f",".","--sonarqube", "coverage.xml"])
     replace_sonarqube_coverage()
 

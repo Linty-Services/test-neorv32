@@ -203,8 +203,8 @@ begin
     "NEORV32 CPU CONFIG ERROR! Number of entries in instruction prefetch buffer <CPU_IPB_ENTRIES> has to be >= 2." severity error;
 
   -- PMP --
-  assert not (PMP_NUM_REGIONS > 0) report
-    "NEORV32 CPU CONFIG NOTE: Implementing " & positive'image(PMP_NUM_REGIONS) & " PMP regions." severity note;
+  --assert not (PMP_NUM_REGIONS > 0) report
+  --  "NEORV32 CPU CONFIG NOTE: Implementing " & positive'image(PMP_NUM_REGIONS) & " PMP regions." severity note;
   assert not (PMP_NUM_REGIONS > 16) report
     "NEORV32 CPU CONFIG ERROR! Number of PMP regions <PMP_NUM_REGIONS> out of valid range (0..16)." severity error;
   assert not ((is_power_of_two_f(PMP_MIN_GRANULARITY) = false) and (PMP_NUM_REGIONS > 0)) report
@@ -215,8 +215,8 @@ begin
     "NEORV32 CPU CONFIG ERROR! Physical memory protection (PMP) requires <CPU_EXTENSION_RISCV_Zicsr> extension to be enabled." severity error;
 
   -- HPM counters --
-  assert not ((CPU_EXTENSION_RISCV_Zihpm = true) and (HPM_NUM_CNTS > 0)) report
-    "NEORV32 CPU CONFIG NOTE: Implementing " & positive'image(HPM_NUM_CNTS) & " HPM counters." severity note;
+  --assert not ((CPU_EXTENSION_RISCV_Zihpm = true) and (HPM_NUM_CNTS > 0)) report
+  --  "NEORV32 CPU CONFIG NOTE: Implementing " & positive'image(HPM_NUM_CNTS) & " HPM counters." severity note;
   assert not ((CPU_EXTENSION_RISCV_Zihpm = true) and (HPM_NUM_CNTS > 29)) report
     "NEORV32 CPU CONFIG ERROR! Number of HPM counters <HPM_NUM_CNTS> out of valid range (0..29)." severity error;
   assert not ((CPU_EXTENSION_RISCV_Zihpm = true) and ((HPM_CNT_WIDTH < 0) or (HPM_CNT_WIDTH > 64))) report
