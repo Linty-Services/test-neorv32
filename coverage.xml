@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <coverage version="1">
- <file path="neorv32-1.7.8/rtl/core/mem/neorv32_dmem.default.vhd">
+ <file path="neorv32/rtl/core/mem/neorv32_dmem.default.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="45"/>
@@ -40,7 +40,7 @@
   <lineToCover branchesToCover="20" covered="false" coveredBranches="0" lineNumber="126"/>
   <lineToCover branchesToCover="16" covered="false" coveredBranches="0" lineNumber="129"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/mem/neorv32_dmem.legacy.vhd">
+ <file path="neorv32/rtl/core/mem/neorv32_dmem.legacy.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="45"/>
@@ -82,7 +82,7 @@
   <lineToCover branchesToCover="20" covered="false" coveredBranches="0" lineNumber="124"/>
   <lineToCover branchesToCover="16" covered="false" coveredBranches="0" lineNumber="127"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/mem/neorv32_imem.default.vhd">
+ <file path="neorv32/rtl/core/mem/neorv32_imem.default.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="46"/>
   <lineToCover covered="false" lineNumber="49"/>
@@ -136,7 +136,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="172"/>
   <lineToCover branchesToCover="16" covered="false" coveredBranches="0" lineNumber="178"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/mem/neorv32_imem.legacy.vhd">
+ <file path="neorv32/rtl/core/mem/neorv32_imem.legacy.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="46"/>
   <lineToCover covered="false" lineNumber="49"/>
@@ -192,11 +192,11 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="169"/>
   <lineToCover branchesToCover="16" covered="false" coveredBranches="0" lineNumber="175"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_application_image.vhd">
+ <file path="neorv32/rtl/core/neorv32_application_image.vhd">
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="1"/>
   <lineToCover branchesToCover="2" covered="false" coveredBranches="0" lineNumber="10"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_boot_rom.vhd">
+ <file path="neorv32/rtl/core/neorv32_boot_rom.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="43"/>
   <lineToCover covered="false" lineNumber="61"/>
@@ -221,11 +221,11 @@
   <lineToCover branchesToCover="16" covered="false" coveredBranches="0" lineNumber="108"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="109"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_bootloader_image.vhd">
+ <file path="neorv32/rtl/core/neorv32_bootloader_image.vhd">
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="1"/>
   <lineToCover branchesToCover="2" covered="false" coveredBranches="0" lineNumber="10"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_bus_keeper.vhd">
+ <file path="neorv32/rtl/core/neorv32_bus_keeper.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="46"/>
   <lineToCover covered="false" lineNumber="73"/>
@@ -294,7 +294,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="203"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="206"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_busswitch.vhd">
+ <file path="neorv32/rtl/core/neorv32_busswitch.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="28" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="94"/>
@@ -380,7 +380,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="250"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="251"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cfs.vhd">
+ <file path="neorv32/rtl/core/neorv32_cfs.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="16" covered="false" coveredBranches="0" lineNumber="49"/>
   <lineToCover covered="false" lineNumber="83"/>
@@ -431,7 +431,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="265"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="266"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="20" covered="false" coveredBranches="0" lineNumber="47"/>
   <lineToCover covered="false" lineNumber="120"/>
@@ -492,7 +492,7 @@
   <lineToCover covered="false" lineNumber="361"/>
   <lineToCover covered="false" lineNumber="396"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_alu.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_alu.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="22" covered="false" coveredBranches="0" lineNumber="44"/>
   <lineToCover covered="false" lineNumber="80"/>
@@ -548,7 +548,7 @@
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="322"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="323"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_bus.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_bus.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="32" covered="false" coveredBranches="0" lineNumber="44"/>
   <lineToCover covered="false" lineNumber="88"/>
@@ -759,7 +759,7 @@
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="533"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="536"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_control.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_control.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="40" covered="false" coveredBranches="0" lineNumber="52"/>
   <lineToCover covered="false" lineNumber="135"/>
@@ -1837,7 +1837,7 @@
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="2667"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="2668"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_cp_bitmanip.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_cp_bitmanip.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="15" covered="false" coveredBranches="0" lineNumber="51"/>
   <lineToCover covered="false" lineNumber="77"/>
@@ -2078,7 +2078,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="554"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="568"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_cp_cfu.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_cp_cfu.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="11" covered="false" coveredBranches="0" lineNumber="47"/>
   <lineToCover covered="false" lineNumber="66"/>
@@ -2107,7 +2107,7 @@
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="203"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="208"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_cp_fpu.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_cp_fpu.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="15" covered="false" coveredBranches="0" lineNumber="58"/>
   <lineToCover covered="false" lineNumber="82"/>
@@ -2797,7 +2797,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="1811"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="1814"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_cp_muldiv.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_cp_muldiv.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="11" covered="false" coveredBranches="0" lineNumber="46"/>
   <lineToCover covered="false" lineNumber="70"/>
@@ -2905,7 +2905,7 @@
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="335"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="337"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_cp_shifter.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_cp_shifter.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="11" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="65"/>
@@ -2952,7 +2952,7 @@
   <lineToCover branchesToCover="32" covered="false" coveredBranches="0" lineNumber="163"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="166"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_decompressor.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_decompressor.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="7" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="58"/>
@@ -3214,7 +3214,7 @@
   <lineToCover covered="false" lineNumber="414"/>
   <lineToCover covered="false" lineNumber="416"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_cpu_regfile.vhd">
+ <file path="neorv32/rtl/core/neorv32_cpu_regfile.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="17" covered="false" coveredBranches="0" lineNumber="53"/>
   <lineToCover covered="false" lineNumber="73"/>
@@ -3249,7 +3249,7 @@
   <lineToCover branchesToCover="22" covered="false" coveredBranches="0" lineNumber="141"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="144"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_debug_dm.vhd">
+ <file path="neorv32/rtl/core/neorv32_debug_dm.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="17" covered="false" coveredBranches="0" lineNumber="58"/>
   <lineToCover covered="false" lineNumber="91"/>
@@ -3536,7 +3536,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="723"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="724"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_debug_dtm.vhd">
+ <file path="neorv32/rtl/core/neorv32_debug_dtm.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="41"/>
   <lineToCover covered="false" lineNumber="74"/>
@@ -3672,11 +3672,11 @@
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="349"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="350"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_dmem.entity.vhd">
+ <file path="neorv32/rtl/core/neorv32_dmem.entity.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="39"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_fifo.vhd">
+ <file path="neorv32/rtl/core/neorv32_fifo.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="9" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="67"/>
@@ -3727,7 +3727,7 @@
   <lineToCover branchesToCover="18" covered="false" coveredBranches="0" lineNumber="189"/>
   <lineToCover branchesToCover="22" covered="false" coveredBranches="0" lineNumber="201"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_gpio.vhd">
+ <file path="neorv32/rtl/core/neorv32_gpio.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="66"/>
@@ -3770,7 +3770,7 @@
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="127"/>
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="135"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_gptmr.vhd">
+ <file path="neorv32/rtl/core/neorv32_gptmr.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="47"/>
   <lineToCover covered="false" lineNumber="69"/>
@@ -3844,7 +3844,7 @@
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="203"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="209"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_icache.vhd">
+ <file path="neorv32/rtl/core/neorv32_icache.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="76"/>
@@ -4022,11 +4022,11 @@
   <lineToCover branchesToCover="22" covered="false" coveredBranches="0" lineNumber="572"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="573"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_imem.entity.vhd">
+ <file path="neorv32/rtl/core/neorv32_imem.entity.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="42"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_mtime.vhd">
+ <file path="neorv32/rtl/core/neorv32_mtime.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="66"/>
@@ -4100,7 +4100,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="195"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="196"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_neoled.vhd">
+ <file path="neorv32/rtl/core/neorv32_neoled.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="56"/>
   <lineToCover covered="false" lineNumber="83"/>
@@ -4252,7 +4252,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="422"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="425"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_onewire.vhd">
+ <file path="neorv32/rtl/core/neorv32_onewire.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="51"/>
   <lineToCover covered="false" lineNumber="76"/>
@@ -4400,7 +4400,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="359"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="362"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_package.vhd">
+ <file path="neorv32/rtl/core/neorv32_package.vhd">
   <lineToCover branchesToCover="7" covered="false" coveredBranches="0" lineNumber="1"/>
   <lineToCover covered="false" lineNumber="44"/>
   <lineToCover covered="false" lineNumber="45"/>
@@ -5184,7 +5184,7 @@
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="2547"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="2549"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_pwm.vhd">
+ <file path="neorv32/rtl/core/neorv32_pwm.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="70"/>
@@ -5262,7 +5262,7 @@
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="199"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="201"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_slink.vhd">
+ <file path="neorv32/rtl/core/neorv32_slink.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="30" covered="false" coveredBranches="0" lineNumber="47"/>
   <lineToCover covered="false" lineNumber="83"/>
@@ -5427,7 +5427,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="427"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="428"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_spi.vhd">
+ <file path="neorv32/rtl/core/neorv32_spi.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="46"/>
   <lineToCover covered="false" lineNumber="76"/>
@@ -5617,7 +5617,7 @@
   <lineToCover branchesToCover="14" covered="false" coveredBranches="0" lineNumber="488"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="494"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_sysinfo.vhd">
+ <file path="neorv32/rtl/core/neorv32_sysinfo.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="7" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="102"/>
@@ -5679,7 +5679,7 @@
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="198"/>
   <lineToCover branchesToCover="8" covered="false" coveredBranches="0" lineNumber="200"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_top.vhd">
+ <file path="neorv32/rtl/core/neorv32_top.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="53" covered="false" coveredBranches="0" lineNumber="47"/>
   <lineToCover covered="false" lineNumber="246"/>
@@ -6141,7 +6141,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="1779"/>
   <lineToCover covered="false" lineNumber="1780"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_trng.vhd">
+ <file path="neorv32/rtl/core/neorv32_trng.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="46"/>
   <lineToCover covered="false" lineNumber="66"/>
@@ -6314,7 +6314,7 @@
   <lineToCover branchesToCover="20" covered="false" coveredBranches="0" lineNumber="702"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="707"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_twi.vhd">
+ <file path="neorv32/rtl/core/neorv32_twi.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="47"/>
   <lineToCover covered="false" lineNumber="74"/>
@@ -6469,7 +6469,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="380"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="381"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_uart.vhd">
+ <file path="neorv32/rtl/core/neorv32_uart.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="13" covered="false" coveredBranches="0" lineNumber="68"/>
   <lineToCover covered="false" lineNumber="102"/>
@@ -6701,7 +6701,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="639"/>
   <lineToCover covered="false" lineNumber="641"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_wdt.vhd">
+ <file path="neorv32/rtl/core/neorv32_wdt.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="53"/>
   <lineToCover covered="false" lineNumber="80"/>
@@ -6794,7 +6794,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="240"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="241"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_wishbone.vhd">
+ <file path="neorv32/rtl/core/neorv32_wishbone.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="24" covered="false" coveredBranches="0" lineNumber="55"/>
   <lineToCover covered="false" lineNumber="107"/>
@@ -6883,7 +6883,7 @@
   <lineToCover branchesToCover="10" covered="false" coveredBranches="0" lineNumber="269"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="270"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_xip.vhd">
+ <file path="neorv32/rtl/core/neorv32_xip.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="18" covered="false" coveredBranches="0" lineNumber="48"/>
   <lineToCover covered="false" lineNumber="85"/>
@@ -7102,7 +7102,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="615"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="618"/>
  </file>
- <file path="neorv32-1.7.8/rtl/core/neorv32_xirq.vhd">
+ <file path="neorv32/rtl/core/neorv32_xirq.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="12" covered="false" coveredBranches="0" lineNumber="49"/>
   <lineToCover covered="false" lineNumber="75"/>
@@ -7187,7 +7187,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="231"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="232"/>
  </file>
- <file path="neorv32-1.7.8/rtl/processor_templates/neorv32_ProcessorTop_Minimal.vhd">
+ <file path="neorv32/rtl/processor_templates/neorv32_ProcessorTop_Minimal.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="5" covered="false" coveredBranches="0" lineNumber="41"/>
   <lineToCover covered="false" lineNumber="98"/>
@@ -7241,7 +7241,7 @@
   <lineToCover covered="false" lineNumber="238"/>
   <lineToCover covered="false" lineNumber="239"/>
  </file>
- <file path="neorv32-1.7.8/rtl/processor_templates/neorv32_ProcessorTop_MinimalBoot.vhd">
+ <file path="neorv32/rtl/processor_templates/neorv32_ProcessorTop_MinimalBoot.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="7" covered="false" coveredBranches="0" lineNumber="41"/>
   <lineToCover covered="false" lineNumber="110"/>
@@ -7296,7 +7296,7 @@
   <lineToCover covered="false" lineNumber="238"/>
   <lineToCover covered="false" lineNumber="239"/>
  </file>
- <file path="neorv32-1.7.8/rtl/processor_templates/neorv32_ProcessorTop_UP5KDemo.vhd">
+ <file path="neorv32/rtl/processor_templates/neorv32_ProcessorTop_UP5KDemo.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="9" covered="false" coveredBranches="0" lineNumber="41"/>
   <lineToCover covered="false" lineNumber="131"/>
@@ -7357,7 +7357,7 @@
   <lineToCover covered="false" lineNumber="238"/>
   <lineToCover covered="false" lineNumber="239"/>
  </file>
- <file path="neorv32-1.7.8/rtl/system_integration/neorv32_ProcessorTop_stdlogic.vhd">
+ <file path="neorv32/rtl/system_integration/neorv32_ProcessorTop_stdlogic.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="53" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="209"/>
@@ -7475,7 +7475,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="523"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="524"/>
  </file>
- <file path="neorv32-1.7.8/rtl/system_integration/neorv32_SystemTop_AvalonMM.vhd">
+ <file path="neorv32/rtl/system_integration/neorv32_SystemTop_AvalonMM.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="52" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="233"/>
@@ -7498,7 +7498,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="449"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="450"/>
  </file>
- <file path="neorv32-1.7.8/rtl/system_integration/neorv32_SystemTop_axi4lite.vhd">
+ <file path="neorv32/rtl/system_integration/neorv32_SystemTop_axi4lite.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="36" covered="false" coveredBranches="0" lineNumber="45"/>
   <lineToCover covered="false" lineNumber="208"/>
@@ -7616,7 +7616,7 @@
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="554"/>
   <lineToCover branchesToCover="4" covered="false" coveredBranches="0" lineNumber="555"/>
  </file>
- <file path="neorv32-1.7.8/rtl/system_integration/neorv32_litex_core_complex.vhd">
+ <file path="neorv32/rtl/system_integration/neorv32_litex_core_complex.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="13" covered="false" coveredBranches="0" lineNumber="76"/>
   <lineToCover covered="false" lineNumber="109"/>
@@ -7626,14 +7626,14 @@
   <lineToCover covered="false" lineNumber="137"/>
   <lineToCover branchesToCover="30" covered="false" coveredBranches="0" lineNumber="159"/>
  </file>
- <file path="neorv32-1.7.8/rtl/test_setups/neorv32_test_setup_approm.vhd">
+ <file path="neorv32/rtl/test_setups/neorv32_test_setup_approm.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="7" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="60"/>
   <lineToCover covered="false" lineNumber="66"/>
   <lineToCover branchesToCover="6" covered="false" coveredBranches="0" lineNumber="95"/>
  </file>
- <file path="neorv32-1.7.8/rtl/test_setups/neorv32_test_setup_bootloader.vhd">
+ <file path="neorv32/rtl/test_setups/neorv32_test_setup_bootloader.vhd">
   <lineToCover covered="false" lineNumber="1"/>
   <lineToCover branchesToCover="7" covered="false" coveredBranches="0" lineNumber="42"/>
   <lineToCover covered="false" lineNumber="63"/>
