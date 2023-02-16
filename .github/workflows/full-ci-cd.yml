@@ -8,7 +8,7 @@ jobs:
   build:
     name: SonarQube Analysis
     timeout-minutes: 20
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       LINTY_YOSYS_PLUGIN_VERSION: 0.8.0
     steps:
@@ -23,6 +23,12 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
+
+      - name: Set up GCC 
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: 11.2.0
+          platform: x64
 
       - name: Install Tabby CAD Suite
         run: |
@@ -56,7 +62,7 @@ jobs:
       - name: Test coverage
         run: |
           sudo apt-get install gnat
-          wget https://github.com/ghdl/ghdl/releases/download/nightly/ghdl-gha-ubuntu-22.04-gcc.tgz
+          wget -nv https://github.com/ghdl/ghdl/releases/download/nightly/ghdl-gha-ubuntu-22.04-gcc.tgz
           mkdir -p ghdl
           tar -xf ghdl-gha-ubuntu-22.04-gcc.tgz --directory ./ghdl
           git clone https://github.com/huettern/ghdl-coverage.git
