@@ -8,7 +8,7 @@ jobs:
   build:
     name: SonarQube Analysis
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-21-10
     env:
       LINTY_YOSYS_PLUGIN_VERSION: 0.8.0
     steps:
@@ -23,12 +23,6 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
-
-      - name: Set up GCC 
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: 11.2
-          platform: x64
 
       - name: Install Tabby CAD Suite
         run: |
