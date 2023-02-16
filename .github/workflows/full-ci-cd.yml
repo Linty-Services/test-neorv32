@@ -52,6 +52,7 @@ jobs:
 
       - name: Test coverage
         uses: ghdl/ghdl@fedora36-gcc-11.3.0
+        run: |
           ghdl -v
           git clone https://github.com/huettern/ghdl-coverage.git
           cd ghdl-coverage/projects/adder/
