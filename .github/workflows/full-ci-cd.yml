@@ -55,6 +55,7 @@ jobs:
 
       - name: Test coverage
         run: |
+          apt-get install gnat
           wget https://github.com/ghdl/ghdl/releases/download/nightly/ghdl-gha-ubuntu-22.04-gcc.tgz
           mkdir -p ghdl
           tar -xf ghdl-gha-ubuntu-22.04-gcc.tgz --directory ./ghdl
@@ -64,7 +65,7 @@ jobs:
           ../../../ghdl/bin/ghdl -a adder_tb.vhd
           ../../../ghdl/bin/ghdl -e -Wl,-lgcov adder_tb
           ../../../ghdl/bin/ghdl -r adder_tb
-          
+
           
 
       - name: Run SonarQube Analysis
