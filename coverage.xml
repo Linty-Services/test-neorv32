@@ -468,12 +468,10 @@
   <lineToCover branchesToCover="4" covered="true" coveredBranches="2" lineNumber="196"/>
   <lineToCover branchesToCover="2" covered="true" coveredBranches="1" lineNumber="200"/>
   <lineToCover branchesToCover="2" covered="true" coveredBranches="1" lineNumber="202"/>
-  <lineToCover branchesToCover="6" covered="true" coveredBranches="3" lineNumber="206"/>
   <lineToCover branchesToCover="2" covered="true" coveredBranches="1" lineNumber="208"/>
   <lineToCover branchesToCover="4" covered="true" coveredBranches="2" lineNumber="210"/>
   <lineToCover branchesToCover="2" covered="true" coveredBranches="1" lineNumber="212"/>
   <lineToCover branchesToCover="4" covered="true" coveredBranches="2" lineNumber="214"/>
-  <lineToCover branchesToCover="8" covered="true" coveredBranches="4" lineNumber="218"/>
   <lineToCover branchesToCover="4" covered="true" coveredBranches="2" lineNumber="220"/>
   <lineToCover branchesToCover="6" covered="true" coveredBranches="3" lineNumber="222"/>
   <lineToCover branchesToCover="4" covered="true" coveredBranches="2" lineNumber="224"/>
