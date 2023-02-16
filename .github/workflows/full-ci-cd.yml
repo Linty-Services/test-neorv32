@@ -49,9 +49,9 @@ jobs:
         run: tar -xvzf linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz -C /opt/tabby/share/yosys/plugins
        
 
-
+      
       - name: Test coverage
-        uses: ghdl/ghdl@fedora36-gcc-11.3.0
+        runs-on: ghdl/ghdl@fedora36-gcc-11.3.0
         run: |
           ghdl -v
           git clone https://github.com/huettern/ghdl-coverage.git
