@@ -19,7 +19,8 @@ jobs:
           ls -al
           cd /src
           ls -al
-          yum  -y install python git
+          sudo dnf install python3-pip
+          yum  -y install git
           pip install gcovr 
           pip install vunit_hdl
           pip install beautifulsoup4
