@@ -5,13 +5,6 @@ on:
       - main
       - test_cicd
 
-jobs:
-  project_setup:
-    runs-on:  ubuntu-latest
-    steps:
-      - name: git clone
-        run: |
-          git clone https://github.com/huettern/ghdl-coverage.git
   coverage:
     runs-on:  ubuntu-latest
     needs: project_setup
@@ -22,12 +15,18 @@ jobs:
     steps:
       - name: Test coverage
         run: |
-          ghdl -v
           pwd
           ls -al
           cd /src
           ls -al
-          yum install python
+          yum  -y install python git
           pip install gcovr 
           pip install vunit_hdl
           pip install beautifulsoup4
+          git clone https://github.com/huettern/ghdl-coverage.git
+          cd /src/ghdl-coverage/projects/adder/
+          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
+          ghdl -a adder_tb.vhd
+          ghdl -e -Wl,-lgcov adder_tb
+          ghdl -r adder_tb
+          gcovr 
