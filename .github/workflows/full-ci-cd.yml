@@ -65,6 +65,9 @@ jobs:
           ../../../ghdl/bin/ghdl -a adder_tb.vhd
           ../../../ghdl/bin/ghdl -e -Wl,-lgcov adder_tb
           ../../../ghdl/bin/ghdl -r adder_tb
+          ../../../ghdl/bin/ghdl -v
+          gcc -v
+          ../../../ghdl/bin/gcov -v
 
           
 
