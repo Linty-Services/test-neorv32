@@ -25,6 +25,10 @@ jobs:
       - name: Test coverage
         run: |
           ghdl -v
+          pwd
+          ls
+          cd /src
+          ls
           cd /src/ghdl-coverage/projects/adder/
           ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
           ghdl -a adder_tb.vhd
