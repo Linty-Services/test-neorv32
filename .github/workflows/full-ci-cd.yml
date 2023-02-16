@@ -74,7 +74,7 @@ jobs:
       - name: Apply neorv32 patch
         run: |
           patch -u ./neorv32/sim/run.py -i run.py.patch
-          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch         
+          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
 
       - name: Run SonarQube Analysis
         run: |
