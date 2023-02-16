@@ -64,7 +64,7 @@ jobs:
           ghdl -e -Wl,-lgcov adder_tb
           ghdl -r adder_tb
 
-  build:
+  scan:
     name: SonarQube Analysis
     timeout-minutes: 20
     runs-on: ubuntu-latest
