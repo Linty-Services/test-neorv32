@@ -8,7 +8,7 @@ jobs:
   build:
     name: SonarQube Analysis
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       LINTY_YOSYS_PLUGIN_VERSION: 0.8.0
     steps:
