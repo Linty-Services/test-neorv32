@@ -53,8 +53,8 @@ jobs:
     name: ghdl test
     timeout-minutes: 20
     runs-on:  ghdl/ghdl@fedora36-gcc-11.3.0
+    steps:
       - name: Test coverage
-        runs-on:
         run: |
           ghdl -v
           git clone https://github.com/huettern/ghdl-coverage.git
