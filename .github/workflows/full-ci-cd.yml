@@ -19,7 +19,7 @@ jobs:
           ls -al
           cd /src
           ls -al
-          sudo dnf install python3-pip
+          yum install -y python3-pip
           yum  -y install git
           pip install gcovr 
           pip install vunit_hdl
