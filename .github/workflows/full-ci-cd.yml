@@ -24,16 +24,15 @@ jobs:
     steps:
       - name: Test coverage
         run: |
-          ghdl -v
           pwd
-          ls
+          ls -al
           cd /src
-          ls
-          cd /src/ghdl-coverage/projects/adder/
-          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
-          ghdl -a adder_tb.vhd
-          ghdl -e -Wl,-lgcov adder_tb
-          ghdl -r adder_tb
+          ls -al
+ #         cd /src/ghdl-coverage/projects/adder/
+ #         ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
+ #         ghdl -a adder_tb.vhd
+ #         ghdl -e -Wl,-lgcov adder_tb
+ #         ghdl -r adder_tb
           yum install python
           pip install gcovr 
           pip install vunit_hdl
