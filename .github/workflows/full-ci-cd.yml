@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: SonarQube Analysis
+    name: Install deps
     timeout-minutes: 20
     runs-on: ubuntu-latest
     env:
@@ -48,7 +48,28 @@ jobs:
       - name: Install Linty Yosys Plugin
         run: tar -xvzf linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz -C /opt/tabby/share/yosys/plugins
 
+  test:
+    name: ghdl test
+    timeout-minutes: 20
+    runs-on:  ghdl/ghdl@fedora36-gcc-11.3.0
+    steps:
+      - name: Test coverage
+        run: |
+          ghdl -v
+          git clone https://github.com/huettern/ghdl-coverage.git
+          cd ghdl-coverage/projects/adder/
+          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
+          ghdl -a adder_tb.vhd
+          ghdl -e -Wl,-lgcov adder_tb
+          ghdl -r adder_tb
 
+  scan:
+    name: SonarQube Analysis
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    env:
+      LINTY_YOSYS_PLUGIN_VERSION: 0.8.0
+    steps: 
       - name: Apply neorv32 patch
         run: |
           patch -u ./neorv32/sim/run.py -i run.py.patch
