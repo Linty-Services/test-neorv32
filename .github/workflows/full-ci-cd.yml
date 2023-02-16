@@ -7,21 +7,19 @@ on:
 
 jobs:
   test:
-    name: ghdl test
-    timeout-minutes: 20
     runs-on:  ubuntu-latest
     container: 
       image: ghdl/ghdl@fedora36-gcc-11.3.0
       volumes:
         - /$(pwd):./
-      steps:
-        - name: Test coverage
-          run: |
-            ghdl -v
-            ghdl -v
-            git clone https://github.com/huettern/ghdl-coverage.git
-            cd ghdl-coverage/projects/adder/
-            ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
-            ghdl -a adder_tb.vhd
-            ghdl -e -Wl,-lgcov adder_tb
-            ghdl -r adder_tb
+    steps:
+      - name: Test coverage
+        run: |
+          ghdl -v
+          ghdl -v
+          git clone https://github.com/huettern/ghdl-coverage.git
+          cd ghdl-coverage/projects/adder/
+          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
+          ghdl -a adder_tb.vhd
+          ghdl -e -Wl,-lgcov adder_tb
+          ghdl -r adder_tb
