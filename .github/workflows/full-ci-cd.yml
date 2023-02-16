@@ -51,17 +51,20 @@ jobs:
   test:
     name: ghdl test
     timeout-minutes: 20
-    runs-on:  ghdl/ghdl@fedora36-gcc-11.3.0
-    steps:
-      - name: Test coverage
-        run: |
-          ghdl -v
-          git clone https://github.com/huettern/ghdl-coverage.git
-          cd ghdl-coverage/projects/adder/
-          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
-          ghdl -a adder_tb.vhd
-          ghdl -e -Wl,-lgcov adder_tb
-          ghdl -r adder_tb
+    runs-on:  ubuntu-latest
+    container: 
+      image: ghdl/ghdl@fedora36-gcc-11.3.0
+      steps:
+        - name: Test coverage
+          run: |
+            ghdl -v
+            ghdl -v
+            git clone https://github.com/huettern/ghdl-coverage.git
+            cd ghdl-coverage/projects/adder/
+            ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
+            ghdl -a adder_tb.vhd
+            ghdl -e -Wl,-lgcov adder_tb
+            ghdl -r adder_tb
 
   scan:
     name: SonarQube Analysis
@@ -73,7 +76,7 @@ jobs:
       - name: Apply neorv32 patch
         run: |
           patch -u ./neorv32/sim/run.py -i run.py.patch
-          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
+          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch         
 
       - name: Run SonarQube Analysis
         run: |
