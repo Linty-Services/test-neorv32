@@ -47,7 +47,6 @@ jobs:
 
       - name: Install Linty Yosys Plugin
         run: tar -xvzf linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz -C /opt/tabby/share/yosys/plugins
-   
 
   test:
     name: ghdl test
