@@ -56,7 +56,6 @@ jobs:
       - name: Test coverage
         run: |
           ghdl -v
-          ghdl -v
           git clone https://github.com/huettern/ghdl-coverage.git
           cd ghdl-coverage/projects/adder/
           ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
