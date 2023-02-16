@@ -3,7 +3,9 @@
 * In core/neorv32_cpu.vhd, the following two lines have been commented out:
     * `assert not (PMP_NUM_REGIONS > 0) report "NEORV32 CPU CONFIG NOTE: Implementing ...`
     * `assert not ((CPU_EXTENSION_RISCV_Zihpm = true) and (HPM_NUM_CNTS > 0)) report "NEORV32 CPU ...`
+  To apply patch execute : `patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch`
 * sim/run.py have been modified to enable coverage with sonarqube xml output in Vunit tests
+  To apply modification execute (in the project root folder) : `patch -u ./neorv32/sim/run.py -i run.py.patch`
 * build.ys file added
 * linty/bugfinder analysis available on : https://sonar.linty-services.com/dashboard?id=TEST_NEORV32 
 
@@ -57,7 +59,7 @@ GHDL-gcc support version automatically pack the coverage support.   you can use 
 - set GHDL as default simulator : `VUNIT_SIMULATOR=ghdl`
 
 ### Run
-- execute `run.py` in the `neorv32-1.7.8/sim/` 
+- execute `VUNIT_SIMULATOR=ghdl ./run.py` in the `neorv32-1.7.8/sim/` 
 - wait for at least 20 Minutes (there is no feed back in the terminal execept at the end of simulation)
 - the `coverage.xml` file will be created at the root of the project.
 
