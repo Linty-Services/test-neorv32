@@ -55,7 +55,7 @@ jobs:
 
       - name: Test coverage
         run: |
-          apt-get install gnat
+          sudo apt-get install gnat
           wget https://github.com/ghdl/ghdl/releases/download/nightly/ghdl-gha-ubuntu-22.04-gcc.tgz
           mkdir -p ghdl
           tar -xf ghdl-gha-ubuntu-22.04-gcc.tgz --directory ./ghdl
