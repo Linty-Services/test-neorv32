@@ -47,24 +47,12 @@ jobs:
 
       - name: Install Linty Yosys Plugin
         run: tar -xvzf linty-yosys-plugin-${{env.LINTY_YOSYS_PLUGIN_VERSION}}.tar.gz -C /opt/tabby/share/yosys/plugins
-       
 
-      
-      - name: Test coverage
-        runs-on: ghdl/ghdl@fedora36-gcc-11.3.0
-        run: |
-          ghdl -v
-          git clone https://github.com/huettern/ghdl-coverage.git
-          cd ghdl-coverage/projects/adder/
-          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
-          ghdl -a adder_tb.vhd
-          ghdl -e -Wl,-lgcov adder_tb
-          ghdl -r adder_tb
 
       - name: Apply neorv32 patch
         run: |
           patch -u ./neorv32/sim/run.py -i run.py.patch
-          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch         
+          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
 
       - name: Run SonarQube Analysis
         run: |
