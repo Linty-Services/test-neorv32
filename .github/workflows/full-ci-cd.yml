@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on:  ubuntu-latest
     container: 
-      image: ghdl/ghdl@fedora36-gcc-11.3.0
+      image: ghdl/ghdl:fedora36-gcc-11.3.0
       volumes:
         - /$(pwd):./
     steps:
