@@ -7,6 +7,8 @@ on:
 
 jobs:
   coverage:
+    name: Neorv32 coverage
+    timeout-minutes: 40
     runs-on:  ubuntu-latest
     container: 
       image: ghdl/ghdl:fedora36-gcc-11.3.0
@@ -27,16 +29,14 @@ jobs:
           fetch-depth: 0
           submodules: 'true'
 
-      - name: Test coverage
+      - name: Create coverage report
         run: |
-          pwd
-          ls -al
-          cd /src
-          ls -al
-          git clone https://github.com/huettern/ghdl-coverage.git
-          cd /src/ghdl-coverage/projects/adder/
-          ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
-          ghdl -a adder_tb.vhd
-          ghdl -e -Wl,-lgcov adder_tb
-          ghdl -r adder_tb
-          gcovr 
+          cd neorv32/sim
+          VUNIT_SIMULATOR=ghdl ./run.py
+          cd ../../
+      
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: ./coverage.xml
