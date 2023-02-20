@@ -13,23 +13,26 @@ jobs:
       volumes:
         - /$(pwd):/src
     steps:
-      - name: Git Checkout
+      - name: Install Prerequisite
+        run: |
+          yum install -y python3-pip
+          yum  -y install git
+          pip install gcovr 
+          pip install vunit_hdl
+          pip install beautifulsoup4
+
+      - name: Git Checkout test Neorv32
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: 'true'
-          
+
       - name: Test coverage
         run: |
           pwd
           ls -al
           cd /src
           ls -al
-          yum install -y python3-pip
-          yum  -y install git
-          pip install gcovr 
-          pip install vunit_hdl
-          pip install beautifulsoup4
           git clone https://github.com/huettern/ghdl-coverage.git
           cd /src/ghdl-coverage/projects/adder/
           ghdl -a -Wc,-fprofile-arcs -Wc,-ftest-coverage adder.vhd
