@@ -8,7 +8,7 @@ on:
 jobs:
   coverage:
     name: Neorv32 coverage
-    timeout-minutes: 200
+    timeout-minutes: 60
     runs-on:  ubuntu-latest
     container: 
       image: ghdl/ghdl:fedora36-gcc-11.3.0
