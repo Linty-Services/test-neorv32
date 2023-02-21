@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - develop
       - test_cicd
 
 jobs:
