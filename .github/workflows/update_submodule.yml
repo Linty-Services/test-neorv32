@@ -22,12 +22,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Pull & update submodules recursively
+      - name: Pull & update submodules recursively (not on master)
+        if: github.ref != 'refs/heads/master'
         run: |
           git submodule update --init --recursive
           git submodule update --recursive --remote
 
-          
       - name: Check if there are any changes
         id: verify_diff
         run: |
