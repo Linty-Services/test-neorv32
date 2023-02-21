@@ -35,7 +35,7 @@ jobs:
         id: verify_tag
         run: |
           cd neorv32
-          if ! git describe --exact-match --tags HEAD | grep -q 'fatal'; then   echo "newtag=true" >> $GITHUB_OUTPUT; fi
+          if git describe --exact-match --tags HEAD ; then   echo "newtag=true" >> $GITHUB_OUTPUT; fi
           cd ..
 
       - name: Check if there are any changes
