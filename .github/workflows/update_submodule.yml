@@ -22,21 +22,40 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Pull & update submodules recursively (not on master)
-        if: github.ref != 'refs/heads/master'
+      - name: Pull & update submodules recursively (not on main)
+        if: github.ref != 'refs/heads/main'
         run: |
           git submodule update --init --recursive
           git submodule update --recursive --remote
+
+      #check if current commit is a tag
+      #if not a tag answer from git describe will include 'fatal'
+      - name: check new Neorv32 tag (not on main)
+        if: github.ref != 'refs/heads/main'
+        id: verify_tag
+        run: |
+          cd neorv32
+          if ! git describe --exact-match --tags HEAD | grep -q 'fatal'; then   echo "newtag=true" >> $GITHUB_OUTPUT; fi
+          cd ..
 
       - name: Check if there are any changes
         id: verify_diff
         run: |
           git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
 
-      - name: Commit Commit & push changes
+      - name: Commit Commit & push changes to develop
         if: steps.verify_diff.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -am "Update submodules"
+          git push
+
+      - name: merge in main (if tag)
+        if: steps.verify_tag.outputs.newtag == 'true'
+        run: |
+          git checkout main
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action tag merger"
+          git merge develop
           git push
