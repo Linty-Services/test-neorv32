@@ -31,10 +31,6 @@ jobs:
           fetch-depth: 0
           submodules: 'true'
 
-      - name: Dirty patch VUnit
-        run: |
-          cp -rf ghdl.py /usr/local/lib/python3.10/site-packages/vunit/sim_if/ghdl.py
-
       - name: Create coverage report
         continue-on-error: true
         run: |
