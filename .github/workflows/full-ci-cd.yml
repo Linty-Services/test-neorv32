@@ -30,10 +30,6 @@ jobs:
           fetch-depth: 0
           submodules: 'true'
 
-      - name: Dirty patch VUnit
-        run: |
-          cp -rf ghdl.py /usr/local/lib/python3.10/site-packages/vunit/sim_if/ghdl.py
-
       - name: Create coverage report
         continue-on-error: true
         run: |
@@ -73,7 +69,7 @@ jobs:
         run: |
           cd /opt
           pip install gdown
-          gdown https://drive.google.com/file/d/19HyQxyqcUfOAZZTkjliec0AHRSeM-Zwm/view?usp=sharing --fuzzy
+          gdown https://drive.google.com/file/d/11owYZ8XqArHr9OVEGQjtyfOEY6W-EqUZ/view?usp=sharing --fuzzy
           tar xfz tabby-linux-x64-20230111.tgz
           cd tabby
           mkdir ./share/yosys/plugins
