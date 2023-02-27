@@ -8,7 +8,7 @@ on:
 jobs:
   coverage:
     name: Neorv32 coverage
-    timeout-minutes: 60
+    timeout-minutes: 90
     runs-on:  ubuntu-latest
     container: 
       image: ghdl/ghdl:fedora35-gcc-10.3.0
@@ -70,7 +70,7 @@ jobs:
           cd /opt
           pip install gdown
           gdown https://drive.google.com/file/d/11owYZ8XqArHr9OVEGQjtyfOEY6W-EqUZ/view?usp=sharing --fuzzy
-          tar xfz tabby-linux-x64-20230111.tgz
+          tar xfz tabby-linux-x64-latest.tgz
           cd tabby
           mkdir ./share/yosys/plugins
           echo "$TABBY_CAD_LICENSE" >> license.txt
