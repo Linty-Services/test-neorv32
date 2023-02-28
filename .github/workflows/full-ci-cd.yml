@@ -103,7 +103,9 @@ jobs:
           cd bin
           tar xvf sail-riscv.18.09.22.tar.gz 
           cd ..
+          echo $(pwd)
           export PATH=$(pwd)/../toolchain/bin:$(pwd)/bin:$PATH
+          echo $PATH
           chmod +x run.sh
           ./run.sh
           gcovr -r . --sonarqube coverage_riscof.xml
