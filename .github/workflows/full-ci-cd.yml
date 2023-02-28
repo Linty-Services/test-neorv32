@@ -113,7 +113,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: neorv32-riscof-code-coverage-report
-          path: ./coverage_riscof.xml
+          path: ./riscof/coverage_riscof.xml
 
   build:
     name: SonarQube Analysis
