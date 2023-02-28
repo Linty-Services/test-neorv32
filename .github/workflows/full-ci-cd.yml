@@ -63,7 +63,7 @@ jobs:
           yum install -y lcov
           yum install -y wget
           pip install gcovr 
-          pip install vunit_hdl
+          pip install riscof
           pip install beautifulsoup4
           wget -nv https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-4.0.0/riscv32-unknown-elf.gcc-12.1.0.tar.gz
           mkdir toolchain
