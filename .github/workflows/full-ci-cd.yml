@@ -28,7 +28,7 @@ jobs:
       - name: Git Checkout test Neorv32
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: 'true'
 
       - name: Create coverage report
@@ -68,20 +68,22 @@ jobs:
           wget -nv https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-4.0.0/riscv32-unknown-elf.gcc-12.1.0.tar.gz
           mkdir toolchain
           tar -xzf riscv32-unknown-elf.gcc-12.1.0.tar.gz -C ./toolchain
+          echo $(pwd)
           export PATH=$(pwd)/toolchain/bin:$PATH
+          echo $PATH
           riscv32-unknown-elf-gcc -v
 
       - name: Git Checkout test Neorv32
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: 'true'
 
       - name: Git Checkout test riscof
         uses: actions/checkout@v3
         with:
           repository: stnolting/neorv32-riscof
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: 'false'
           path: ./riscof
 
@@ -127,7 +129,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: 'true'
 
       - name: Set Up JDK 17
