@@ -94,10 +94,10 @@ jobs:
           patch -u ./neorv32/sim/run.py -i run.py.patch
           patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
 
-      - name: Download coverage result
-        uses: actions/download-artifact@v3
-        with:
-          name: neorv32-code-coverage-report
+#      - name: Download coverage result
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: neorv32-code-coverage-report
 
       - name: Run SonarQube Analysis
         run: |
@@ -112,8 +112,9 @@ jobs:
             -Dsonar.projectKey=TEST_NEORV32 \
             -Dsonar.projectName="Test NEORV32" \
             -Dsonar.sources=./neorv32/rtl \
-            -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo \
-            -Dsonar.coverageReportPaths=./coverage.xml
+            -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo
+#            -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo \
+#            -Dsonar.coverageReportPaths=./coverage.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
