@@ -51,7 +51,7 @@ jobs:
     needs: coverage
     runs-on: ubuntu-latest
     env:
-      LINTY_YOSYS_PLUGIN_VERSION: 0.10.0
+      LINTY_YOSYS_PLUGIN_VERSION: 0.13.0
     steps:
       - name: Git Checkout
         uses: actions/checkout@v3
