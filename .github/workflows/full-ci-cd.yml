@@ -61,6 +61,7 @@ jobs:
           yum  -y install git
           yum install -y patch
           yum install -y lcov
+          yum install -y wget
           pip install gcovr 
           pip install vunit_hdl
           pip install beautifulsoup4
