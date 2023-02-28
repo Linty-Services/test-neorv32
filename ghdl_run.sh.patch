@@ -1,0 +1,12 @@
+--- ./ghdl_run.sh.old.txt	2023-02-28 13:27:19.603870207 +0100
++++ ghdl_run.sh.new.txt	2023-02-28 13:27:19.699870205 +0100
+@@ -15,7 +15,8 @@
+ 
+ GHDL="${GHDL:-ghdl}"
+ 
+-$GHDL -m --std=08 --work=neorv32 neorv32_riscof_tb
++#comment this line has it block coverage and doen't seem to add any value for simulation
++#$GHDL -m --std=08 --work=neorv32 neorv32_riscof_tb
+ 
+ # timeout as fall-back; simulation should be terminated by the testbench using "finish;"
+ GHDL_TIMEOUT="--stop-time=2ms"
