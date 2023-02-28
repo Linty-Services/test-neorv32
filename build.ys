@@ -28,6 +28,7 @@ verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_mtime.vhd
 verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_neoled.vhd
 verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_onewire.vhd
 verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_pwm.vhd
+verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_sdi.vhd
 verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_spi.vhd
 verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_sysinfo.vhd
 verific -work neorv32 -vhdl ./neorv32/rtl/core/neorv32_top.vhd
