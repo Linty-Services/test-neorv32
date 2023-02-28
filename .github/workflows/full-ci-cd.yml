@@ -116,7 +116,7 @@ jobs:
   build:
     name: SonarQube Analysis
     timeout-minutes: 20
-    needs: coverage
+    needs: [coverage,coverage_riscof]
     runs-on: ubuntu-latest
     env:
       LINTY_YOSYS_PLUGIN_VERSION: 0.10.0
