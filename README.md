@@ -48,20 +48,45 @@ GHDL-gcc support version automatically pack the coverage support.   you can use 
 - or daily binaires [ghdl-gha-ubuntu-22.04-gcc.tgz](https://github.com/ghdl/ghdl/releases/download/nightly/ghdl-gha-ubuntu-22.04-gcc.tgz) from ghdl but be careful with GCC version ( even if I was running on ubuntu 22.04 I got a library error `libgcov profiling error:./ghdl-coverage-master/projects/adder/adder.gcda:Version mismatch - expected 11.3 (release) (B13*) got 11.2 (release) (B12*)` trying to execute it).
 
 ## neorv32 coverage
+this coverage strategy use Vunit general testbench from neorv32 folder.
 
 ### prerequisite
 - Install:
+    - Python3 with pip
     - VUnit with `pip install vunit_hdl`
     - ghdl gcc backend for coverage support
     - gcovr with `pip install gcovr`
     - xml python library `pip install beautifulsoup4`
 - Set GHDL up in the path with `export PATH=<ghdl/bin/path>:$PATH`
 - set GHDL as default simulator : `VUNIT_SIMULATOR=ghdl`
+- apply pathes :
+    - `patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch`
+    - `patch -u ./neorv32/sim/run.py -i run.py.patch`
 
 ### Run
 - execute `VUNIT_SIMULATOR=ghdl ./run.py` in the `neorv32-1.7.8/sim/` 
 - wait for at least 20 Minutes (there is no feed back in the terminal execept at the end of simulation)
 - the `coverage.xml` file will be created at the root of the project.
+
+
+## neorv32 coverage with riscof environnement
+This coevrage strategy use ghdl and the riscof framework from https://github.com/stnolting/neorv32-riscof repository cloned in `riscof` folder.
+### prerequisite
+- Install:
+    - Python3 with pip
+    - ghdl gcc backend for coverage support
+    - lcov 
+    - gcovr with `pip install gcovr`
+    - [RISC-V GCC toolchain](https://github.com/stnolting/riscv-gcc-prebuilt) - for compiling native rv32 code
+- apply pathes :
+    - `patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch`
+    - `patch -u ./neorv32/sim/run.py -i run.py.patch`
+    - `patch -u ./riscof/plugin-neorv32/riscof_neorv32.py -i riscof_neorv32.py.patch`
+    - `patch -u ./riscof/sim/ghdl_setup.sh -i ghdl_setup.sh.patch`
+    - `patch -u ./riscof/sim/ghdl_run.sh -i ghdl_run.sh.patch`
+
+
+### Run
 
 
 # NX occupation measures

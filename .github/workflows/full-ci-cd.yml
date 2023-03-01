@@ -27,7 +27,7 @@ jobs:
       - name: Git Checkout test Neorv32
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: 'true'
 
       - name: Create coverage report
@@ -45,10 +45,79 @@ jobs:
           name: neorv32-code-coverage-report
           path: ./coverage.xml
 
+  coverage_riscof:
+    name: Neorv32 coverage with riscof
+    timeout-minutes: 30
+    runs-on:  ubuntu-latest
+    container: 
+      image: ghdl/ghdl:fedora35-gcc-10.3.0
+      volumes:
+        - /$(pwd):/src
+    steps:
+      - name: Install Prerequisite
+        run: |
+          yum install -y python3-pip
+          yum  -y install git
+          yum install -y patch
+          yum install -y lcov
+          yum install -y wget
+          pip install gcovr 
+          pip install riscof
+          pip install beautifulsoup4
+          cd /opt/
+          wget -nv https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-4.0.0/riscv32-unknown-elf.gcc-12.1.0.tar.gz
+          mkdir toolchain_r5
+          tar -xzf riscv32-unknown-elf.gcc-12.1.0.tar.gz -C ./toolchain_r5
+          export PATH=/opt/toolchain_r5/bin:$PATH
+          riscv32-unknown-elf-gcc -v
+
+      - name: Git Checkout test Neorv32
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          submodules: 'true'
+
+      - name: Git Checkout test riscof
+        uses: actions/checkout@v3
+        with:
+          repository: stnolting/neorv32-riscof
+          fetch-depth: 1
+          submodules: 'false'
+          path: ./riscof
+
+      - name: Create riscof coverage report
+        continue-on-error: true
+        run: |
+          cd riscof
+          git submodule init 
+          git submodule update riscv-arch-test/
+          rmdir neorv32
+          ln -s ../neorv32 ./
+          cd ..         
+          patch -u ./neorv32/sim/run.py -i run.py.patch
+          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
+          patch -u ./riscof/plugin-neorv32/riscof_neorv32.py -i riscof_neorv32.py.patch
+          patch -u ./riscof/sim/ghdl_setup.sh -i ghdl_setup.sh.patch
+          patch -u ./riscof/sim/ghdl_run.sh -i ghdl_run.sh.patch
+          cd riscof
+          cd bin
+          tar xvf sail-riscv.18.09.22.tar.gz 
+          cd ..
+          export PATH=/opt/toolchain_r5/bin:$(pwd)/bin:$PATH
+          chmod +x run.sh
+          ./run.sh
+          gcovr -r . --sonarqube coverage_riscof.xml
+      
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: neorv32-riscof-code-coverage-report
+          path: ./riscof/coverage_riscof.xml
+
   build:
     name: SonarQube Analysis
     timeout-minutes: 20
-    needs: coverage
+    needs: [coverage,coverage_riscof]
     runs-on: ubuntu-latest
     env:
       LINTY_YOSYS_PLUGIN_VERSION: 0.10.0
@@ -56,7 +125,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           submodules: 'true'
 
       - name: Set Up JDK 17
@@ -95,10 +164,15 @@ jobs:
           patch -u ./neorv32/sim/run.py -i run.py.patch
           patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
 
-      - name: Download coverage result
+      - name: Download vunit coverage result
         uses: actions/download-artifact@v3
         with:
           name: neorv32-code-coverage-report
+
+      - name: Download riscof coverage result
+        uses: actions/download-artifact@v3
+        with:
+          name: neorv32-riscof-code-coverage-report
 
       - name: Run SonarQube Analysis
         run: |
@@ -114,7 +188,7 @@ jobs:
             -Dsonar.projectName="Test NEORV32" \
             -Dsonar.sources=./neorv32/rtl \
             -Dsonar.vhdl.topLevelEntity=neorv32_ProcessorTop_UP5KDemo \
-            -Dsonar.coverageReportPaths=./coverage.xml
+            -Dsonar.coverageReportPaths=./coverage.xml,./coverage_riscof.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

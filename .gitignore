@@ -25,3 +25,6 @@ neorv32*/sim/coverage.xml
 
 #python temp file
 **/*.pyc
+
+#riscof project
+riscof/
