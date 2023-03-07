@@ -1,0 +1,108 @@
+name: Linty
+on:
+  workflow_dispatch:
+    inputs:
+      neorv32-coverage:
+        description: "Generate neorv32 code coverage report"
+        type: boolean
+        required: true
+      neorv32-riscof-coverage:
+        description: "Generate neorv32-riscof code coverage report"
+        type: boolean
+        required: true
+
+jobs:
+#  coverage:
+#    name: Coverage
+#    timeout-minutes: 90
+#    container:
+#      image: ghdl/ghdl:fedora36-gcc-11.3.0
+#      volumes:
+#        - /$(pwd):/src
+#    steps:
+#      - name: Install Prerequisite
+#        run: |
+#          yum install -y python3-pip
+#          yum  -y install git
+#          yum install -y patch
+#          pip install gcovr
+#          pip install vunit_hdl
+#          pip install beautifulsoup4
+#
+#      - name: Git Checkout test Neorv32
+#        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
+#          submodules: 'true'
+#
+#      - name: Create coverage report
+#        continue-on-error: true
+#        run: |
+#          patch -u ./neorv32/sim/run.py -i run.py.patch
+#          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i neorv32_cpu.vhd.patch
+#          cd neorv32/sim
+#          VUNIT_SIMULATOR=ghdl ./run.py
+#          cd ../../
+#
+#      - name: Archive code coverage results
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: neorv32-code-coverage-report
+#          path: ./coverage.xml
+
+  linty:
+    name: Linty
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+      - name: Git Checkout neorv32
+        uses: actions/checkout@v3
+        with:
+          repository: stnolting/neorv32
+          path: ./neorv32
+          fetch-depth: 0
+
+      - name: Apply neorv32 patch
+        run: |
+          cd ./patches
+          patch -u ../neorv32/sim/run.py -i ./run.py.patch
+          patch -u ../neorv32/rtl/core/neorv32_cpu.vhd -i ./neorv32_cpu.vhd.patch
+
+#      - name: Download coverage result
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: neorv32-code-coverage-report
+
+      - name: Copy build.ys and sonar-project.properties and header.template files
+        run: |
+          cd ./linty
+          cp ./build.ys ../neorv32
+          cp ./sonar-project.properties ../neorv32
+          cp ./header.template ../neorv32
+
+      - name: Run Linty
+        run: |
+          cd ./neorv32
+          docker run \
+            --rm \
+            -e SONAR_HOST_URL="https://sonar.linty-services.com" \
+            -e SONAR_TOKEN="${{ secrets.SONARQUBE_SCANNER_FOR_PRIVATE_REPOSITORIES_TOKEN }}" \
+            -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" \
+            -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \
+            -e GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
+            -e TABBY_CAD_LICENSE="$TABBY_CAD_LICENSE" \
+            -v "$PWD:/usr/src" \
+            lintyservices/linty-scanner:1.0.0
+        env:
+          TABBY_CAD_LICENSE: ${{secrets.TABBY_CAD_LICENSE}}
+
+      - name: Debug
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: debug
+          path: |
+            ./neorv32/bugfinder_workdir/

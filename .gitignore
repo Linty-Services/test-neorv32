@@ -7,7 +7,6 @@
 # ---- SonarQube
 .sonar
 .scannerwork
-sonar-project*.properties
 
 # ---- Yosys
 yosys_workdir/
