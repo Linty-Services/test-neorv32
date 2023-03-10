@@ -54,6 +54,9 @@ jobs:
     name: Linty
     timeout-minutes: 20
     runs-on: ubuntu-latest
+    env:
+      YOSYS_PLUGIN_VERSION: 1.0.0
+
     steps:
       - name: Git Checkout
         uses: actions/checkout@v3
@@ -76,6 +79,31 @@ jobs:
 #        with:
 #          name: neorv32-code-coverage-report
 
+      - name: Install Tabby CAD Suite
+        run: |
+          cd /opt
+          pip install gdown
+          gdown https://drive.google.com/file/d/1pRXmiA9QdunuK1vVHanpgXeEgSiksAJU/view?usp=sharing --fuzzy
+          tar xfz tabby-linux-x64-20230309.tgz
+          cd tabby
+          mkdir ./share/yosys/plugins
+          echo "$TABBY_CAD_LICENSE" >> license.txt
+        env:
+          TABBY_CAD_LICENSE: ${{secrets.TABBY_CAD_LICENSE}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Yosys Plugin
+        uses: dsaltares/fetch-gh-release-asset@1.1.0
+        with:
+          repo: "Linty-Services/linty-yosys-plugin"
+          version: "tags/${{ env.YOSYS_PLUGIN_VERSION }}"
+          file: "linty-yosys-plugin-${{ env.YOSYS_PLUGIN_VERSION }}.tar.gz"
+          target: "linty-yosys-plugin-${{ env.YOSYS_PLUGIN_VERSION }}.tar.gz"
+          token: ${{ secrets.PUBLIC_SHARE_GITHUB_TOKEN }}
+
+      - name: Install Yosys Plugin
+        run: tar -xvzf linty-yosys-plugin-${{ env.YOSYS_PLUGIN_VERSION }}.tar.gz -C /opt/tabby/share/yosys/plugins
+
       - name: Copy build.ys and sonar-project.properties and header.template files
         run: |
           cd ./linty
@@ -86,6 +114,9 @@ jobs:
       - name: Run Linty
         run: |
           cd ./neorv32
+          touch ./coverage.xml
+          touch ./coverage-riscof.xml
+          echo "$TABBY_CAD_LICENSE" >> ./yosyshq_license.txt
           docker run \
             --rm \
             -e SONAR_HOST_URL="https://sonar.linty-services.com" \
@@ -93,9 +124,10 @@ jobs:
             -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" \
             -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \
             -e GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
-            -e TABBY_CAD_LICENSE="$TABBY_CAD_LICENSE" \
+            -v "/opt/tabby:/opt/tabby" \
+            -v "$PWD/yosyshq-license.txt:/opt/licenses/yosyshq-license.txt" \
             -v "$PWD:/usr/src" \
-            lintyservices/linty-scanner:1.0.0
+            lintyservices/linty-scanner:0.1.0
         env:
           TABBY_CAD_LICENSE: ${{secrets.TABBY_CAD_LICENSE}}
 
