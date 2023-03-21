@@ -51,8 +51,75 @@ jobs:
 #          name: neorv32-code-coverage-report
 #          path: ./coverage.xml
 
+  riscof_coverage:
+    name: Coverage with riscof
+    if: github.event.inputs.neorv32-riscof-coverage == 'true'
+    timeout-minutes: 30
+    runs-on:  ubuntu-latest
+    container:
+      image: ghdl/ghdl:fedora35-gcc-10.3.0
+      volumes:
+        - /$(pwd):/src
+    steps:
+      - name: Install Prerequisites
+        run: |
+          yum install -y python3-pip git patch lcov wget 
+          pip install gcovr riscof beautifulsoup4
+          cd /opt
+          wget -nv https://github.com/stnolting/riscv-gcc-prebuilt/releases/download/rv32i-4.0.0/riscv32-unknown-elf.gcc-12.1.0.tar.gz
+          mkdir toolchain_r5
+          tar -xzf riscv32-unknown-elf.gcc-12.1.0.tar.gz -C ./toolchain_r5
+          /opt/toolchain_r5/bin/riscv32-unknown-elf-gcc -v
+
+      - name: Git Checkout
+        uses: actions/checkout@v3
+
+      - name: Git Checkout neorv32
+        uses: actions/checkout@v3
+        with:
+          repository: stnolting/neorv32
+          path: ./neorv32
+          fetch-depth: 0
+          ref: v1.8.0
+
+      - name: Git Checkout test riscof
+        uses: actions/checkout@v3
+        with:
+          repository: stnolting/neorv32-riscof
+          submodules: 'false'
+          path: ./riscof
+
+      - name: Create riscof coverage report
+        run: |
+          cd riscof
+          git submodule init 
+          git submodule update riscv-arch-test/
+          rmdir neorv32
+          ln -s ../neorv32 ./
+          cd ..         
+          patch -u ./neorv32/sim/run.py -i ./patches/run.py.patch
+          patch -u ./neorv32/rtl/core/neorv32_cpu.vhd -i ./patches/neorv32_cpu.vhd.patch
+          patch -u ./riscof/plugin-neorv32/riscof_neorv32.py -i ./patches/riscof_neorv32.py.patch
+          patch -u ./riscof/sim/ghdl_setup.sh -i ./patches/ghdl_setup.sh.patch
+          patch -u ./riscof/sim/ghdl_run.sh -i ./patches/ghdl_run.sh.patch
+          cd ./riscof/bin
+          tar xvf sail-riscv.18.09.22.tar.gz 
+          cd ..
+          export PATH=/opt/toolchain_r5/bin:$(pwd)/bin:$PATH
+          chmod +x run.sh
+          ./run.sh
+          gcovr -r . --sonarqube coverage_riscof.xml
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: neorv32-riscof-code-coverage-report
+          path: ./riscof/coverage_riscof.xml
+
   linty:
     name: Linty
+    needs: riscof_coverage
+    if: always()
     timeout-minutes: 20
     runs-on: ubuntu-latest
 
@@ -92,14 +159,24 @@ jobs:
           key: sonar
           restore-keys: sonar
 
+      - name: Download neorv32 coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: neorv32-code-coverage-report
+          path: ./neorv32/coverage.xml
+
+      - name: Download riscof coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: neorv32-riscof-code-coverage-report
+          path: ./neorv32/coverage-riscof.xml
+
       - name: Run Linty
         run: |
           cd ./neorv32
-          touch ./coverage.xml
-          touch ./coverage-riscof.xml
           docker run \
             --rm \
-            -e SONAR_HOST_URL="https://sonar.linty-services.com" \
+            -e SONAR_HOST_URL="${{ vars.LINTY_CLOUD_URL }}" \
             -e SONAR_TOKEN="${{ secrets.SONARQUBE_SCANNER_FOR_PRIVATE_REPOSITORIES_TOKEN }}" \
             -e GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" \
             -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \

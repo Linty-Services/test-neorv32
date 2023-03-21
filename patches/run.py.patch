@@ -16,19 +16,19 @@
 +    results.merge_coverage(file_name="coverage_data")
 +    call(["gcovr", "-v","-f",".","--sonarqube", "coverage.xml"])
 +    replace_sonarqube_coverage()
- 
+
  cli = VUnitCLI()
  cli.parser.add_argument(
 @@ -14,9 +26,6 @@
  args = cli.parse_args()
- 
+
  PRJ = VUnit.from_args(args=args)
 -PRJ.add_com()
 -PRJ.add_verification_components()
 -PRJ.add_osvvm()
- 
+
  ROOT = Path(__file__).parent
- 
+
 @@ -28,9 +37,16 @@
      # hence subdir 'mem' is not picked by the previous pattern
      ROOT / ".." / "rtl" / "core" / "mem" / "*.vhd"
@@ -38,19 +38,19 @@
  NEORV32.test_bench("neorv32_tb").set_generic("ci_mode", args.ci_mode)
 +PRJ.set_sim_option("enable_coverage", True)
 +
- 
+
 +PRJ.add_com()
 +PRJ.add_verification_components()
 +PRJ.add_osvvm()
-+ 
++
 +PRJ.set_sim_option("enable_coverage", True)
  PRJ.set_sim_option("disable_ieee_warnings", True)
  PRJ.set_sim_option("ghdl.sim_flags", ["--max-stack-alloc=256"])
- 
+
 @@ -55,4 +71,5 @@
- 
+
  _gen_vhdl_ls(PRJ)
- 
+
 -PRJ.main()
 +PRJ.main(post_run=post_run)
 +
